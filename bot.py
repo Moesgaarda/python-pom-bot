@@ -12,16 +12,18 @@ import re
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
+MONGO_IP = "mongodb://localhost:27018/"
 POM_TRACK_LIMIT = 10
 DESCRIPTION_LIMIT = 30
 POM_CHANNEL_ID = 662941079057989633
 MULTILINE_DESCRIPTION_DISABLED = True
 bot = commands.Bot(command_prefix='?', case_insensitive=True)
 
+
 '''
 Create connection to database
 '''
-dbo = pymongo.MongoClient("mongodb://localhost:27017/")
+dbo = pymongo.MongoClient(MONGO_IP)
 db = dbo["poms"]
 pomcollection = db["tracked"]
 
